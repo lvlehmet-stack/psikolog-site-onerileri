@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ad Soyad · Psikolog</title>
+<meta name="description" content="Yetişkinlerle sanat psikoterapisi, varoluşçu ve psikanalitik yaklaşımlarla çalışan psikolog. Yüz yüze ve online seanslar.">
+<meta name="theme-color" content="#F5F4F0">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400&family=Schibsted+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ------------------------------------------------------------------
+   01 / 11 — Minimalizm · "Beyaz alan = nefes alanı"
+   Tek vurgu rengi (Klein mavisi) yalnızca 5 yerde:
+   isim noktası · birincil CTA · bağlantı hover alt çizgisi · aktif menü · odak halkası
+------------------------------------------------------------------- */
+:root{
+  --paper:#F5F4F0;
+  --ink:#141414;
+  --muted:#75736D;          /* dekoratif: eğik çizgiler, form çizgileri */
+  --muted-ink:#5F5D58;      /* küçük metin için aynı ton, AA kontrast (≈5.7:1) */
+  --hairline:#DAD8D2;
+  --accent:#1D3BD1;
+
+  --sans:"Schibsted Grotesk","Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  --serif:"Newsreader","Iowan Old Style",Georgia,"Times New Roman",serif;
+
+  /* Tip ölçeği — 7 basamak, başka boyut yok */
+  --t-xs:.75rem;                                        /* 12 */
+  --t-sm:.875rem;                                       /* 14 */
+  --t-base:1.0625rem;                                   /* 17 */
+  --t-md:clamp(1.1875rem, 1.05rem + .45vw, 1.5rem);     /* 19 → 24 */
+  --t-lg:clamp(1.5rem, 1.15rem + 1.2vw, 2.25rem);       /* 24 → 36 */
+  --t-xl:clamp(2.25rem, 1.3rem + 3.2vw, 4.75rem);       /* 36 → 76 */
+  --t-hero:clamp(2.5rem, 1rem + 6.6vw, 7.25rem);        /* 40 → 116 */
+
+  --pad-l:20px;
+  --pad-r:20px;
+  --gap:16px;
+  --section:clamp(64px, 8vw, 128px);
+  --header-h:64px;
+}
+@media (min-width:901px){
+  :root{
+    --pad-l:clamp(64px, 9vw, 152px);
+    --pad-r:clamp(32px, 4vw, 64px);
+    --gap:clamp(16px, 2vw, 32px);
+    --header-h:76px;
+  }
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:var(--t-base);font-weight:400;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:clip;
+}
+html.menu-acik{overflow:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+p{text-wrap:pretty}
+h1,h2,h3{text-wrap:balance}
+::selection{background:var(--ink);color:var(--paper)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.atla{position:absolute;left:var(--pad-l);top:-100px;z-index:200;background:var(--ink);color:var(--paper);padding:10px 16px;font-size:var(--t-sm);text-decoration:none}
+.atla:focus{top:12px}
+
+/* ---------- Izgara ---------- */
+.wrap{max-width:1440px;margin-inline:auto;padding-left:var(--pad-l);padding-right:var(--pad-r)}
+.grid{display:grid;grid-template-columns:minmax(0,1fr)}
+@media (min-width:901px){
+  .grid{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+  .icerik{grid-column:4 / span 8}
+  .icerik--genis{grid-column:4 / -1}
+}
+section[id]{scroll-margin-top:var(--header-h)}
+
+/* ---------- Ortak parçalar ---------- */
+.baglanti{
+  color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;
+  text-underline-offset:.32em;text-decoration-color:var(--ink);
+  transition:text-decoration-color .2s ease;
+}
+.baglanti:hover{text-decoration-color:var(--accent)}
+.ok-link{display:inline-flex;align-items:center;gap:10px}
+.ok-link svg{width:18px;height:18px;flex:none;transition:transform .2s ease}
+.ok-link:hover svg{transform:translateX(4px)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:14px;
+  font:inherit;font-size:var(--t-sm);font-weight:500;line-height:1.2;
+  padding:16px 22px;border:1px solid var(--accent);border-radius:0;
+  background:var(--accent);color:var(--paper);text-decoration:none;cursor:pointer;
+  transition:background-color .2s ease,border-color .2s ease;
+}
+.btn:hover{background:var(--ink);border-color:var(--ink)}
+.btn svg{width:18px;height:18px;flex:none;transition:transform .2s ease}
+.btn:hover svg{transform:translateX(4px)}
+
+.btn-cizgi{
+  display:inline-flex;align-items:center;font-size:var(--t-sm);font-weight:500;line-height:1.2;
+  padding:11px 18px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;
+  transition:background-color .2s ease,color .2s ease;
+}
+.btn-cizgi:hover{background:var(--ink);color:var(--paper)}
+
+.etiket{
+  display:flex;align-items:baseline;gap:14px;margin:0 0 32px;
+  font-size:var(--t-xs);font-weight:500;letter-spacing:.14em;line-height:1.4;text-transform:uppercase;
+}
+.etiket-no{color:var(--muted-ink);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+@media (min-width:901px){
+  .etiket{grid-column:1 / span 3;align-self:start;position:sticky;top:calc(var(--header-h) + 40px);margin:0;padding-top:.6em}
+}
+
+.bolum-ic{border-top:1px solid var(--hairline);padding-block:var(--section)}
+
+.lead{margin:0;font-size:var(--t-lg);line-height:1.25;letter-spacing:-.02em;max-width:26em}
+.display{margin:0;font-size:var(--t-xl);font-weight:500;line-height:1.02;letter-spacing:-.035em}
+.kucuk-giris{margin:0 0 20px;font-size:var(--t-sm);color:var(--muted-ink)}
+.mini-baslik{margin:0 0 20px;font-size:var(--t-xs);font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+
+.iki-kol{display:grid;gap:0 var(--gap);margin-top:48px}
+.iki-kol p{margin:0 0 1em;max-width:36em}
+@media (min-width:700px){.iki-kol{grid-template-columns:1fr 1fr;margin-top:64px}}
+
+/* ---------- Header ---------- */
+.site-header{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--hairline)}
+.header-ic{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:var(--header-h)}
+.logo{display:inline-flex;flex-direction:column;line-height:1.15;text-decoration:none;color:var(--ink)}
+.logo-ad{font-size:var(--t-base);font-weight:700;letter-spacing:-.01em}
+.logo-nokta{color:var(--accent)}
+.logo-unvan{margin-top:3px;font-size:var(--t-xs);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-ink)}
+
+.site-nav{display:flex;align-items:center;gap:40px}
+.nav-liste{display:flex;gap:clamp(20px,2.2vw,36px);margin:0;padding:0;list-style:none}
+.nav-link{position:relative;display:inline-block;padding:8px 0;font-size:var(--t-sm);font-weight:500;text-decoration:none;color:var(--ink)}
+.nav-link::before{
+  content:"";position:absolute;left:-11px;top:50%;width:5px;height:5px;margin-top:-2px;
+  border-radius:50%;background:var(--accent);opacity:0;transition:opacity .2s ease;
+}
+.nav-link.aktif::before{opacity:1}
+.nav-link:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;text-decoration-color:var(--accent)}
+
+.menu-dugme{
+  display:none;align-items:center;justify-content:center;width:44px;height:44px;margin-right:-10px;
+  padding:0;border:0;background:none;color:var(--ink);cursor:pointer;
+}
+.menu-cizgiler{position:relative;display:block;width:24px;height:8px}
+.menu-cizgiler span{position:absolute;left:0;width:100%;height:1.5px;background:currentColor;transition:transform .2s ease}
+.menu-cizgiler span:first-child{top:0}
+.menu-cizgiler span:last-child{bottom:0}
+.menu-dugme[aria-expanded="true"] .menu-cizgiler span:first-child{transform:translateY(3.25px) rotate(45deg)}
+.menu-dugme[aria-expanded="true"] .menu-cizgiler span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+
+@media (max-width:900px){
+  .js .menu-dugme{display:inline-flex}
+  .js .site-nav{
+    display:none;position:fixed;top:calc(var(--header-h) + 1px);left:0;right:0;bottom:0;
+    flex-direction:column;align-items:stretch;gap:32px;
+    padding:24px var(--pad-r) 120px var(--pad-l);background:var(--paper);overflow-y:auto;
+  }
+  .js .site-nav.acik{display:flex}
+  .nav-liste{flex-direction:column;gap:0}
+  .nav-liste li{border-bottom:1px solid var(--hairline)}
+  .nav-link{display:block;padding:14px 0;font-size:var(--t-lg);font-weight:400;letter-spacing:-.015em}
+  .nav-link::before{left:auto;right:4px}
+  .site-nav .btn-cizgi{align-self:flex-start}
+  html:not(.js) .header-ic{flex-wrap:wrap;padding-block:14px}
+  html:not(.js) .site-nav{flex-direction:column;align-items:flex-start;gap:16px;width:100%}
+  html:not(.js) .nav-liste{width:100%}
+}
+
+/* ---------- Hero ---------- */
+.hero{padding-top:clamp(28px,4vw,56px);padding-bottom:clamp(64px,8vw,120px)}
+.hero-meta{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px var(--gap);margin:0;padding:14px 0 0;list-style:none;
+  border-top:1px solid var(--ink);
+  font-size:var(--t-xs);font-weight:500;letter-spacing:.12em;line-height:1.4;text-transform:uppercase;
+}
+.hero-meta li:not(:first-child){color:var(--muted-ink)}
+.hero-baslik{
+  margin:clamp(56px,9vw,144px) 0 clamp(48px,7vw,112px);
+  font-size:var(--t-hero);font-weight:500;line-height:.98;letter-spacing:-.045em;
+}
+.hero-baslik em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em;padding-right:.03em}
+.hero-metin p{margin:0 0 36px;max-width:30em;font-size:var(--t-md);line-height:1.45;letter-spacing:-.005em}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:20px 32px}
+.hero-foto{width:min(62%,300px);margin:64px 0 0;justify-self:end}
+.hero-foto img{
+  width:100%;aspect-ratio:4 / 5;object-fit:cover;object-position:50% 18%;
+  filter:grayscale(1) contrast(1.03);transition:filter .5s ease;
+}
+@media (hover:hover){.hero-foto:hover img{filter:grayscale(0) contrast(1)}}
+.hero-foto figcaption{
+  display:flex;justify-content:space-between;gap:12px;margin-top:10px;
+  font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--muted-ink);
+}
+@media (min-width:901px){
+  .hero-meta{grid-column:1 / -1;grid-template-columns:repeat(4,minmax(0,1fr))}
+  .hero-baslik{grid-column:1 / span 11}
+  .hero-metin{grid-column:1 / span 5;align-self:end}
+  .hero-foto{grid-column:10 / span 3;width:auto;margin:0;align-self:end}
+}
+
+/* ---------- Hakkımda ---------- */
+/* (lead + iki-kol ortak parçalardan) */
+
+/* ---------- Yaklaşımım ---------- */
+.uc-kol{display:grid;gap:48px var(--gap);margin:64px 0 0;padding:0;list-style:none}
+.uc-kol li{padding-top:18px;border-top:1px solid var(--ink)}
+.kol-no{display:block;margin-bottom:40px;font-size:var(--t-xs);letter-spacing:.1em;color:var(--muted-ink);font-variant-numeric:tabular-nums}
+.uc-kol h3{margin:0 0 14px;font-size:var(--t-md);font-weight:500;line-height:1.25;letter-spacing:-.01em}
+.uc-kol p{margin:0}
+@media (min-width:901px){.uc-kol{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:88px}}
+
+/* ---------- Konular ---------- */
+.konular{margin:0;padding:0;list-style:none;font-size:var(--t-lg);line-height:1.38;letter-spacing:-.02em;max-width:30em}
+.konular li{display:inline}
+.konular li:not(:last-child)::after{
+  content:"";display:inline-block;width:1px;height:.78em;margin:0 .5em;vertical-align:-.06em;
+  background:var(--muted);transform:rotate(22deg);
+}
+
+/* ---------- Süreç ---------- */
+.adimlar{margin:0;padding:0;list-style:none;border-bottom:1px solid var(--hairline)}
+.adim{display:grid;grid-template-columns:2.75rem minmax(0,1fr);gap:8px 12px;padding:28px 0;border-top:1px solid var(--hairline)}
+.adim-no{font-size:var(--t-md);line-height:1.3;color:var(--muted-ink);font-variant-numeric:tabular-nums}
+.adim h3{margin:0;font-size:var(--t-md);font-weight:500;line-height:1.3;letter-spacing:-.01em}
+.adim p{grid-column:2;margin:0;max-width:34em}
+.gizlilik{display:flex;gap:14px;align-items:baseline;margin:24px 0 0;font-size:var(--t-sm);color:var(--muted-ink)}
+.gizlilik span{flex:none;font-size:var(--t-xs);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.seans-blok{margin-top:88px}
+.seans{display:grid;grid-template-columns:1fr 1fr;gap:28px var(--gap);margin:0}
+.seans div{padding-top:12px;border-top:1px solid var(--ink)}
+.seans dt{margin-bottom:6px;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--muted-ink)}
+.seans dd{margin:0}
+@media (min-width:901px){
+  .adim{grid-template-columns:repeat(9,minmax(0,1fr));column-gap:var(--gap);padding:32px 0}
+  .adim-no{grid-column:1}
+  .adim h3{grid-column:2 / span 3}
+  .adim p{grid-column:5 / span 5}
+  .gizlilik{padding-left:calc((100% - 8 * var(--gap)) / 9 + var(--gap))}
+  .seans{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:36px}
+}
+
+/* ---------- Eğitimler ---------- */
+.egitim{margin:0;border-bottom:1px solid var(--hairline)}
+.egitim-satir{display:grid;gap:4px;padding:22px 0;border-top:1px solid var(--hairline)}
+.egitim dt{font-weight:500}
+.egitim dd{margin:0}
+.program{display:block}
+.detay{display:block;margin-top:4px;font-size:var(--t-sm);color:var(--muted-ink)}
+@media (min-width:901px){
+  .egitim-satir{grid-template-columns:repeat(9,minmax(0,1fr));column-gap:var(--gap);padding:26px 0}
+  .egitim dt{grid-column:1 / span 3}
+  .egitim dd{grid-column:4 / span 6}
+}
+
+/* ---------- Sunum + alıntı ---------- */
+.sunum-metin{margin-top:40px}
+.alinti{margin:clamp(88px,11vw,176px) 0 0}
+.alinti blockquote{margin:0}
+.alinti p{
+  margin:0;font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(2.25rem, 1.1rem + 4.4vw, 6rem);line-height:1.04;letter-spacing:-.02em;
+  text-indent:-.36em;
+}
+.alinti figcaption{margin-top:28px;font-size:var(--t-sm);color:var(--muted-ink)}
+.alinti figcaption strong{font-weight:500;color:var(--ink)}
+.alinti cite{font-style:normal}
+@media (min-width:901px){.alinti{grid-column:4 / -1}}
+
+/* ---------- Yazılar ---------- */
+.yazilar{margin:0;padding:0;list-style:none;border-bottom:1px solid var(--hairline)}
+.yazilar li{border-top:1px solid var(--hairline)}
+.yazi{display:grid;grid-template-columns:2.75rem minmax(0,1fr);gap:6px 12px;padding:26px 0;color:var(--ink);text-decoration:none}
+.yazi-no{padding-top:.25em;font-size:var(--t-sm);color:var(--muted-ink);font-variant-numeric:tabular-nums}
+.yazi-baslik{margin:0;font-size:var(--t-md);font-weight:500;line-height:1.3;letter-spacing:-.01em;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:1px;text-underline-offset:5px;transition:text-decoration-color .2s ease}
+.yazi:hover .yazi-baslik{text-decoration-color:var(--accent)}
+.yazi-ozet{margin:6px 0 0;max-width:38em;color:var(--muted-ink)}
+.yazi-meta{grid-column:2;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:12px;font-size:var(--t-sm)}
+.yazi-sure{color:var(--muted-ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.yazi-ok{display:inline-flex;align-items:center;gap:10px;font-weight:500;white-space:nowrap}
+.yazi-ok svg{width:20px;height:20px;flex:none;transition:transform .25s ease}
+.yazi:hover .yazi-ok svg,.yazi:focus-visible .yazi-ok svg{transform:translateX(6px)}
+.tum-yazilar{margin:32px 0 0}
+@media (min-width:1025px){
+  .yazi{grid-template-columns:repeat(9,minmax(0,1fr));column-gap:var(--gap);padding:30px 0}
+  .yazi-no{grid-column:1}
+  .yazi-govde{grid-column:2 / span 5}
+  .yazi-meta{grid-column:7 / span 3;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:10px;margin-top:0;padding-top:.3em}
+}
+
+/* ---------- SSS ---------- */
+.sss{border-bottom:1px solid var(--hairline)}
+.sss details{border-top:1px solid var(--hairline)}
+.sss summary{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:24px 0;
+  font-size:var(--t-md);font-weight:500;line-height:1.35;letter-spacing:-.01em;cursor:pointer;list-style:none;
+}
+.sss summary::-webkit-details-marker{display:none}
+.arti{position:relative;flex:none;width:18px;height:18px;margin-top:.28em;transition:transform .3s ease}
+.arti::before,.arti::after{content:"";position:absolute;background:var(--ink)}
+.arti::before{left:0;right:0;top:50%;height:1px;margin-top:-.5px}
+.arti::after{top:0;bottom:0;left:50%;width:1px;margin-left:-.5px}
+.sss details[open] .arti{transform:rotate(45deg)}
+.sss-cevap{padding:0 48px 30px 0;max-width:40em}
+.sss-cevap p{margin:0}
+
+/* ---------- İletişim ---------- */
+.iletisim-ic{display:grid;gap:56px}
+.bilgiler{margin:0;border-bottom:1px solid var(--hairline)}
+.bilgiler div{padding:14px 0;border-top:1px solid var(--hairline)}
+.bilgiler dt{margin-bottom:2px;font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--muted-ink)}
+.bilgiler dd{margin:0;overflow-wrap:anywhere}
+.alan{display:flex;flex-direction:column;gap:6px;margin:0 0 30px}
+.alan label,.form legend{font-size:var(--t-xs);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-ink)}
+.alan input,.alan textarea{
+  width:100%;padding:10px 0;border:0;border-bottom:1px solid var(--muted);border-radius:0;
+  background:transparent;color:var(--ink);font:inherit;font-size:var(--t-base);line-height:1.5;
+  transition:border-color .2s ease;
+}
+.alan textarea{resize:vertical;min-height:112px}
+.alan input:focus,.alan textarea:focus{border-bottom-color:var(--ink)}
+.alan input:focus-visible,.alan textarea:focus-visible{outline-offset:4px}
+.form fieldset{margin:0 0 30px;padding:0;border:0;min-width:0}
+.form legend{padding:0}
+.secenekler{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:14px}
+.secenek{display:inline-flex;align-items:center;gap:10px;cursor:pointer}
+.secenek input{
+  appearance:none;-webkit-appearance:none;display:grid;place-content:center;flex:none;
+  width:16px;height:16px;margin:0;border:1px solid var(--ink);border-radius:50%;background:transparent;cursor:pointer;
+}
+.secenek input::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink);transform:scale(0);transition:transform .15s ease}
+.secenek input:checked::before{transform:scale(1)}
+.form .btn{margin-top:6px}
+.form-not{margin:18px 0 0;font-size:var(--t-sm);color:var(--muted-ink)}
+.form-tesekkur{margin:10px 0 0;min-height:1.5em;font-size:var(--t-sm);font-weight:500}
+@media (min-width:901px){
+  .iletisim-ic{grid-template-columns:repeat(9,minmax(0,1fr));column-gap:var(--gap);row-gap:88px}
+  .iletisim-baslik{grid-column:1 / -1;max-width:12em}
+  .bilgiler{grid-column:1 / span 3;align-self:start}
+  .form{grid-column:5 / span 5}
+}
+
+/* ---------- Footer ---------- */
+.site-footer{padding-bottom:112px;font-size:var(--t-sm)}
+.footer-grid{row-gap:32px;padding-top:56px;border-top:1px solid var(--hairline)}
+.site-footer p{margin:0}
+.site-footer ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.site-footer a{text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:1px;text-underline-offset:.3em;transition:text-decoration-color .2s ease}
+.site-footer a:hover{text-decoration-color:var(--accent)}
+.footer-imza strong{display:block;font-weight:500}
+.footer-imza span{color:var(--muted-ink)}
+.footer-uyari{padding-top:20px;border-top:1px solid var(--hairline);font-size:var(--t-xs);color:var(--muted-ink)}
+@media (min-width:901px){
+  .site-footer{padding-bottom:96px}
+  .footer-imza{grid-column:1 / span 3}
+  .footer-nav{grid-column:4 / span 3}
+  .footer-yasal{grid-column:7 / span 3}
+  .footer-sosyal{grid-column:10 / span 3}
+  .footer-uyari{grid-column:1 / -1;margin-top:40px}
+}
+
+/* ---------- Sabit öğeler ---------- */
+.tasarim-etiket{
+  position:fixed;left:16px;bottom:16px;z-index:1000;display:inline-block;
+  max-width:calc(100vw - 16px - 16px - 48px - 12px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  padding:7px 12px;border:1px solid var(--ink);border-radius:999px;background:var(--paper);color:var(--ink);
+  font-size:11px;font-weight:500;letter-spacing:.02em;line-height:1.3;text-decoration:none;
+  transition:background-color .2s ease,color .2s ease;
+}
+.tasarim-etiket:hover{background:var(--ink);color:var(--paper)}
+.whatsapp{
+  position:fixed;right:16px;bottom:16px;z-index:1000;display:grid;place-items:center;
+  width:48px;height:48px;border:1px solid var(--ink);border-radius:50%;background:var(--ink);color:var(--paper);
+  transition:background-color .2s ease,color .2s ease;
+}
+.whatsapp:hover{background:var(--paper);color:var(--ink)}
+.whatsapp svg{width:22px;height:22px}
+@media (min-width:901px){
+  .tasarim-etiket{left:24px;bottom:24px;padding:8px 14px;font-size:var(--t-xs)}
+  .whatsapp{right:24px;bottom:24px;width:52px;height:52px}
+  .whatsapp svg{width:24px;height:24px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="site-header">
+  <div class="wrap header-ic">
+    <a class="logo" href="#ust" aria-label="Ad Soyad, Psikolog — sayfa başı">
+      <span class="logo-ad">Ad Soyad<span class="logo-nokta" aria-hidden="true">.</span></span>
+      <span class="logo-unvan">Psikolog</span>
+    </a>
+
+    <button class="menu-dugme" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç">
+      <span class="menu-cizgiler" aria-hidden="true"><span></span><span></span></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Ana menü">
+      <ul class="nav-liste">
+        <li><a class="nav-link" href="#hakkimda">Hakkımda</a></li>
+        <li><a class="nav-link" href="#yaklasim">Yaklaşımım</a></li>
+        <li><a class="nav-link" href="#surec">Süreç</a></li>
+        <li><a class="nav-link" href="#yazilar">Yazılar</a></li>
+        <li><a class="nav-link" href="#iletisim">İletişim</a></li>
+      </ul>
+      <a class="btn-cizgi" href="#iletisim">Randevu Al</a>
+    </nav>
+  </div>
+</header>
+
+<main id="icerik">
+
+  <!-- HERO -->
+  <section class="hero" id="ust" data-nav="" aria-labelledby="hero-baslik">
+    <div class="wrap">
+      <div class="grid">
+        <ul class="hero-meta" aria-label="Kısaca">
+          <li>Psikolog</li>
+          <li>Yetişkin bireysel terapi</li>
+          <li>Yüz yüze &amp; Online</li>
+          <li>50 dakikalık seanslar</li>
+        </ul>
+
+        <h1 class="hero-baslik" id="hero-baslik">Kaygı bir düşman değil, bir <em>haberci</em> olabilir.</h1>
+
+        <div class="hero-metin">
+          <p>Yetişkinlerle sanat psikoterapisi, varoluşçu ve psikanalitik yaklaşımlarla çalışıyorum. Yüz yüze ve online seanslar.</p>
+          <div class="hero-cta">
+            <a class="btn" href="#iletisim">Ön görüşme ayarla
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="baglanti" href="#yaklasim">Yaklaşımımı tanıyın</a>
+          </div>
+        </div>
+
+        <figure class="hero-foto">
+          <img src="img/foto-dikey.jpg" alt="Psikolog Ad Soyad" width="900" height="1125" fetchpriority="high">
+          <figcaption><span>Ad Soyad</span><span>Psikolog</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 HAKKIMDA -->
+  <section id="hakkimda" data-nav="hakkimda" aria-labelledby="h-hakkimda">
+    <div class="wrap">
+      <div class="grid bolum-ic">
+        <h2 class="etiket" id="h-hakkimda"><span class="etiket-no">01</span>Hakkımda</h2>
+        <div class="icerik">
+          <p class="lead">Doğuş Üniversitesi Psikoloji bölümünden yüksek onur derecesiyle mezun oldum. Şu anda Gedik Üniversitesi Klinik Psikoloji Yüksek Lisans programında tez aşamasındayım; tezimde otantiklik, kaygı ve somatizasyon arasındaki ilişkiyi inceliyorum.</p>
+          <div class="iki-kol">
+            <p>Varoluşçu Akademi’deki mezuniyet tezimi “Psikanalizden varoluşçuluğa kaygı kavramı” üzerine yazdım ve bu çalışmayı “Kaygının Anlamı” başlığıyla çeşitli kurumlarda sunmaya devam ediyorum.</p>
+            <p>Yetişkinlerle; sanat psikoterapisi, varoluşçu psikoterapi ve psikanalitik psikoterapi çerçevesinde çalışıyorum. Bugüne kadar birçok sivil toplum kuruluşunda çocuklar ve yetişkinlerle gönüllü çalışmalar yürüttüm.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 YAKLAŞIMIM -->
+  <section id="yaklasim" data-nav="yaklasim" aria-labelledby="h-yaklasim">
+    <div class="wrap">
+      <div class="grid bolum-ic">
+        <h2 class="etiket" id="h-yaklasim"><span class="etiket-no">02</span>Yaklaşımım</h2>
+        <div class="icerik--genis">
+          <p class="lead">Yetişkinlerle üç yaklaşım çerçevesinde çalışıyorum.</p>
+          <ol class="uc-kol">
+            <li>
+              <span class="kol-no" aria-hidden="true">i</span>
+              <h3>Sanat Psikoterapisi</h3>
+              <p>Her şey kelimelerle anlatılamaz. Resim, kolaj ve serbest malzemeyle çalışarak içinizde olup bitene bir biçim veriyoruz. Yetenek ya da sanat geçmişi gerekmez; önemli olan ortaya çıkan eser değil, o süreçte fark ettiklerinizdir.</p>
+            </li>
+            <li>
+              <span class="kol-no" aria-hidden="true">ii</span>
+              <h3>Varoluşçu Psikoterapi</h3>
+              <p>Anlam, özgürlük, yalnızlık, seçim ve ölümlülük… Hepimizin bir gün karşılaştığı temel sorular. Varoluşçu yaklaşımda belirtilerin ötesine, hayatınızı nasıl yaşadığınıza ve kim olmak istediğinize bakıyoruz.</p>
+            </li>
+            <li>
+              <span class="kol-no" aria-hidden="true">iii</span>
+              <h3>Psikanalitik Psikoterapi</h3>
+              <p>Bugün tekrar eden örüntülerin, ilişkilerin ve duyguların geçmişteki izlerini birlikte keşfediyoruz. Bilinçdışı süreçleri anlamak, tekrarlardan çıkıp yeni seçimler yapmaya alan açar.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 KONULAR -->
+  <section id="konular" data-nav="yaklasim" aria-labelledby="h-konular">
+    <div class="wrap">
+      <div class="grid bolum-ic">
+        <h2 class="etiket" id="h-konular"><span class="etiket-no">03</span>Konular</h2>
+        <div class="icerik--genis">
+          <p class="kucuk-giris">Hangi konularda destek olabilirim</p>
+          <ul class="konular" role="list">
+            <li>Kaygı ve endişe</li>
+            <li>Bedensel belirtiler ve psikosomatik yakınmalar</li>
+            <li>Anlam kaybı ve varoluşsal sorular</li>
+            <li>Kendini gerçek hissetmeme</li>
+            <li>Yas ve kayıp</li>
+            <li>İlişkilerde tekrar eden örüntüler</li>
+            <li>Yalnızlık</li>
+            <li>Çökkün duygudurum</li>
+            <li>Yaşam geçişleri ve kararlar</li>
+            <li>Duyguları ifade etmekte zorlanma</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 SÜREÇ -->
+  <section id="surec" data-nav="surec" aria-labelledby="h-surec">
+    <div class="wrap">
+      <div class="grid bolum-ic">
+        <h2 class="etiket" id="h-surec"><span class="etiket-no">04</span>Süreç</h2>
+        <div class="icerik--genis">
+          <ol class="adimlar">
+            <li class="adim">
+              <span class="adim-no" aria-hidden="true">01</span>
+              <h3>Ön görüşme</h3>
+              <p>Kısa bir telefon görüşmesi ya da mesajla ihtiyacınızı konuşuyoruz.</p>
+            </li>
+            <li class="adim">
+              <span class="adim-no" aria-hidden="true">02</span>
+              <h3>İlk seans</h3>
+              <p>Sizi neyin getirdiğini, beklentilerinizi ve çalışma çerçevesini birlikte belirliyoruz.</p>
+            </li>
+            <li class="adim">
+              <span class="adim-no" aria-hidden="true">03</span>
+              <h3>Düzenli seanslar</h3>
+              <p>Genellikle haftada bir, 50 dakikalık seanslar; yüz yüze ya da online.</p>
+            </li>
+          </ol>
+          <p class="gizlilik"><span>Not</span> Görüşmelerde paylaşılan her şey etik ilkeler çerçevesinde gizli tutulur.</p>
+
+          <div class="seans-blok">
+            <h3 class="mini-baslik">Seans bilgisi</h3>
+            <dl class="seans">
+              <div><dt>Kapsam</dt><dd>Yetişkin bireysel terapi (18+)</dd></div>
+              <div><dt>Süre</dt><dd>50 dakika</dd></div>
+              <div><dt>Sıklık</dt><dd>Genellikle haftada bir</dd></div>
+              <div><dt>Biçim</dt><dd>Yüz yüze &amp; Online</dd></div>
+              <div><dt>Ücret</dt><dd>Ücret bilgisi ön görüşmede paylaşılır.</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 EĞİTİMLER -->
+  <section id="egitim" data-nav="hakkimda" aria-labelledby="h-egitim">
+    <div class="wrap">
+      <div class="grid bolum-ic">
+        <h2 class="etiket" id="h-egitim"><span class="etiket-no">05</span>Eğitimler</h2>
+        <div class="icerik--genis">
+          <dl class="egitim">
+            <div class="egitim-satir">
+              <dt>Doğuş Üniversitesi</dt>
+              <dd><span class="program">Lisans · Psikoloji</span><span class="detay">Yüksek onur derecesi</span></dd>
+            </div>
+            <div class="egitim-satir">
+              <dt>Gedik Üniversitesi</dt>
+              <dd><span class="program">Yüksek Lisans · Klinik Psikoloji</span><span class="detay">Tez aşamasında — Tez: “Otantiklik, Kaygı ve Somatizasyon İlişkisinin İncelenmesi”</span></dd>
+            </div>
+            <div class="egitim-satir">
+              <dt>Varoluşçu Akademi</dt>
+              <dd><span class="program">Varoluşçu Psikoterapi Temel Analiz Eğitimi</span><span class="detay">2 yıl — Mezuniyet tezi: “Psikanalizden Varoluşçuluğa Kaygı Kavramı”</span></dd>
+            </div>
+            <div class="egitim-satir">
+              <dt>İstanbul Psikoterapi Okulu</dt>
+              <dd><span class="program">Psikanalitik Psikoterapi Eğitimi</span><span class="detay">1 yıl</span></dd>
+            </div>
+            <div class="egitim-satir">
+              <dt>Prof. Dr. Hira Selma Kalkan</dt>
+              <dd><span class="program">Sanat Terapisi Eğitimi</span><span class="detay">1 yıl</span></dd>
+            </div>
+            <div class="egitim-satir">
+              <dt>Gönüllü çalışmalar</dt>
+              <dd><span class="program">Çeşitli sivil toplum kuruluşlarında</span><span class="detay">Çocuklar ve yetişkinlerle</span></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 SUNUM -->
+  <section id="sunum" data-nav="" aria-labelledby="h-sunum">
+    <div class="wrap">
+      <div class="grid bolum-ic">
+        <h2 class="etiket" id="h-sunum"><span class="etiket-no">06</span>Sunum</h2>
+        <div class="icerik">
+          <h3 class="display">Kaygının Anlamı</h3>
+          <div class="iki-kol sunum-metin">
+            <p>Varoluşçu Akademi mezuniyet tezime dayanan bu sunumda kaygının psikanalitik kuramdan varoluşçu düşünceye nasıl anlaşıldığını anlatıyorum.</p>
+            <div>
+              <p>Kaygıyı yalnızca giderilmesi gereken bir belirti olarak değil, bize bir şey söyleyen bir deneyim olarak ele alıyorum. Kurum ve topluluklardan gelen sunum davetlerine açığım.</p>
+              <a class="baglanti ok-link" href="#iletisim">Sunum daveti için yazın
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <figure class="alinti">
+          <blockquote><p>“Kaygı, özgürlüğün baş dönmesidir.”</p></blockquote>
+          <figcaption><strong>Søren Kierkegaard</strong> — <cite>Kaygı Kavramı</cite> (1844)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 YAZILAR -->
+  <section id="yazilar" data-nav="yazilar" aria-labelledby="h-yazilar">
+    <div class="wrap">
+      <div class="grid bolum-ic">
+        <h2 class="etiket" id="h-yazilar"><span class="etiket-no">07</span>Yazılar</h2>
+        <div class="icerik--genis">
+          <ol class="yazilar">
+            <li>
+              <a class="yazi" href="#">
+                <span class="yazi-no" aria-hidden="true">01</span>
+                <div class="yazi-govde">
+                  <h3 class="yazi-baslik">Kaygı neden bir düşman değildir?</h3>
+                  <p class="yazi-ozet">Kaygıyı susturmaya çalışmak yerine ne söylediğini dinlemek üzerine.</p>
+                </div>
+                <div class="yazi-meta">
+                  <span class="yazi-sure">6 dk okuma</span>
+                  <span class="yazi-ok">Okumaya devam et <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="yazi" href="#">
+                <span class="yazi-no" aria-hidden="true">02</span>
+                <div class="yazi-govde">
+                  <h3 class="yazi-baslik">Beden konuştuğunda: Somatizasyon</h3>
+                  <p class="yazi-ozet">Açıklanamayan ağrıların ve bedensel yakınmaların duygusal karşılıkları.</p>
+                </div>
+                <div class="yazi-meta">
+                  <span class="yazi-sure">7 dk okuma</span>
+                  <span class="yazi-ok">Okumaya devam et <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="yazi" href="#">
+                <span class="yazi-no" aria-hidden="true">03</span>
+                <div class="yazi-govde">
+                  <h3 class="yazi-baslik">Sanat terapisi için yetenekli olmak gerekir mi?</h3>
+                  <p class="yazi-ozet">Kısa cevap: hayır. Uzun cevap bu yazıda.</p>
+                </div>
+                <div class="yazi-meta">
+                  <span class="yazi-sure">4 dk okuma</span>
+                  <span class="yazi-ok">Okumaya devam et <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="yazi" href="#">
+                <span class="yazi-no" aria-hidden="true">04</span>
+                <div class="yazi-govde">
+                  <h3 class="yazi-baslik">Otantiklik: Kendin olmak neden bu kadar zor?</h3>
+                  <p class="yazi-ozet">Başkalarının beklentileriyle kendi sesimiz arasında kalmak üzerine.</p>
+                </div>
+                <div class="yazi-meta">
+                  <span class="yazi-sure">8 dk okuma</span>
+                  <span class="yazi-ok">Okumaya devam et <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+                </div>
+              </a>
+            </li>
+          </ol>
+          <p class="tum-yazilar"><a class="baglanti" href="#">Tüm yazılar</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 SSS -->
+  <section id="sss" data-nav="" aria-labelledby="h-sss">
+    <div class="wrap">
+      <div class="grid bolum-ic">
+        <h2 class="etiket" id="h-sss"><span class="etiket-no">08</span>Sık sorulanlar</h2>
+        <div class="icerik sss">
+          <details>
+            <summary><span>Sanat terapisi için çizim yeteneğim olması gerekir mi?</span><span class="arti" aria-hidden="true"></span></summary>
+            <div class="sss-cevap"><p>Hayır. Amaç güzel bir eser üretmek değil; malzemeyle kurduğunuz ilişki ve ortaya çıkanın size düşündürdükleri.</p></div>
+          </details>
+          <details>
+            <summary><span>Seanslar ne kadar sürüyor, ne sıklıkla yapılıyor?</span><span class="arti" aria-hidden="true"></span></summary>
+            <div class="sss-cevap"><p>Seanslar 50 dakikadır ve genellikle haftada bir yapılır. Sürecin sıklığı ve süresi ihtiyaca göre birlikte belirlenir.</p></div>
+          </details>
+          <details>
+            <summary><span>Online seanslar nasıl işliyor?</span><span class="arti" aria-hidden="true"></span></summary>
+            <div class="sss-cevap"><p>Görüntülü görüşme ile yapılır. Kesintisiz, sessiz ve kendinizi rahat hissettiğiniz bir ortam yeterlidir.</p></div>
+          </details>
+          <details>
+            <summary><span>Hangi yaş grubuyla çalışıyorsunuz?</span><span class="arti" aria-hidden="true"></span></summary>
+            <div class="sss-cevap"><p>Şu anda yalnızca yetişkinlerle (18 yaş ve üzeri) çalışıyorum.</p></div>
+          </details>
+          <details>
+            <summary><span>Görüşmelerde konuşulanlar gizli mi?</span><span class="arti" aria-hidden="true"></span></summary>
+            <div class="sss-cevap"><p>Evet. Paylaştıklarınız etik ilkeler ve yasal çerçeve dahilinde gizli tutulur.</p></div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 İLETİŞİM -->
+  <section id="iletisim" data-nav="iletisim" aria-labelledby="h-iletisim">
+    <div class="wrap">
+      <div class="grid bolum-ic">
+        <h2 class="etiket" id="h-iletisim"><span class="etiket-no">09</span>İletişim</h2>
+        <div class="icerik--genis iletisim-ic">
+          <p class="display iletisim-baslik">İlk adım bir mesaj kadar kolay.</p>
+
+          <dl class="bilgiler">
+            <div><dt>Telefon / WhatsApp</dt><dd>0 (5XX) XXX XX XX</dd></div>
+            <div><dt>E-posta</dt><dd><a class="baglanti" href="mailto:merhaba@alanadi.com">merhaba@alanadi.com</a></dd></div>
+            <div><dt>Adres</dt><dd>Ofis adresi eklenecek</dd></div>
+            <div><dt>Seanslar</dt><dd>Yüz yüze &amp; Online</dd></div>
+            <div><dt>Instagram</dt><dd><a class="baglanti" href="#">@kullaniciadi</a></dd></div>
+          </dl>
+
+          <form class="form" id="on-gorusme" action="#" method="post">
+            <div class="alan">
+              <label for="f-ad">Adınız</label>
+              <input id="f-ad" name="ad" type="text" autocomplete="name" required>
+            </div>
+            <div class="alan">
+              <label for="f-iletisim">Telefon veya e-posta</label>
+              <input id="f-iletisim" name="iletisim" type="text" autocomplete="email" required>
+            </div>
+            <fieldset>
+              <legend>Tercih</legend>
+              <div class="secenekler">
+                <label class="secenek" for="f-yuzyuze"><input id="f-yuzyuze" type="radio" name="tercih" value="Yüz yüze" checked> Yüz yüze</label>
+                <label class="secenek" for="f-online"><input id="f-online" type="radio" name="tercih" value="Online"> Online</label>
+              </div>
+            </fieldset>
+            <div class="alan">
+              <label for="f-mesaj">Kısaca mesajınız (opsiyonel)</label>
+              <textarea id="f-mesaj" name="mesaj" rows="4"></textarea>
+            </div>
+            <button class="btn" type="submit">Ön görüşme talep et
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+            </button>
+            <p class="form-not">Bilgileriniz yalnızca size dönüş yapmak için kullanılır.</p>
+            <p class="form-tesekkur" id="form-tesekkur" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="grid footer-grid">
+      <p class="footer-imza"><strong>© 2026 Ad Soyad · Psikolog</strong><span>Yüz yüze &amp; Online</span></p>
+      <nav class="footer-nav" aria-label="Alt menü">
+        <ul>
+          <li><a href="#hakkimda">Hakkımda</a></li>
+          <li><a href="#yaklasim">Yaklaşımım</a></li>
+          <li><a href="#surec">Süreç</a></li>
+          <li><a href="#yazilar">Yazılar</a></li>
+          <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+      </nav>
+      <ul class="footer-yasal">
+        <li><a href="#">KVKK Aydınlatma Metni</a></li>
+        <li><a href="#">Gizlilik Politikası</a></li>
+      </ul>
+      <ul class="footer-sosyal">
+        <li><a href="#">Instagram — @kullaniciadi</a></li>
+        <li><a href="mailto:merhaba@alanadi.com">merhaba@alanadi.com</a></li>
+      </ul>
+      <p class="footer-uyari">Bu site acil durum hizmeti vermez. Acil durumlarda 112’yi arayın.</p>
+    </div>
+  </div>
+</footer>
+
+<a class="tasarim-etiket" href="index.html">← Tüm seçenekler · 1 / 4 · Minimalizm</a>
+
+<a class="whatsapp" href="#iletisim" aria-label="WhatsApp ile yazın">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function(){
+  var root = document.documentElement;
+
+  /* Mobil menü */
+  var dugme = document.querySelector('.menu-dugme');
+  var nav = document.getElementById('site-nav');
+  function menuAyarla(acik){
+    dugme.setAttribute('aria-expanded', acik ? 'true' : 'false');
+    dugme.setAttribute('aria-label', acik ? 'Menüyü kapat' : 'Menüyü aç');
+    nav.classList.toggle('acik', acik);
+    root.classList.toggle('menu-acik', acik);
+  }
+  dugme.addEventListener('click', function(){
+    menuAyarla(dugme.getAttribute('aria-expanded') !== 'true');
+  });
+  nav.addEventListener('click', function(e){
+    if (e.target.closest('a')) menuAyarla(false);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && nav.classList.contains('acik')) { menuAyarla(false); dugme.focus(); }
+  });
+  var genis = window.matchMedia('(min-width: 901px)');
+  function genisKontrol(){ if (genis.matches) menuAyarla(false); }
+  if (genis.addEventListener) genis.addEventListener('change', genisKontrol); else genis.addListener(genisKontrol);
+
+  /* Aktif menü öğesi (yalnızca işaret; içerik görünürlüğüne dokunmaz) */
+  var linkler = Array.prototype.slice.call(document.querySelectorAll('.nav-liste .nav-link'));
+  function aktifYap(id){
+    linkler.forEach(function(a){
+      var on = !!id && a.getAttribute('href') === '#' + id;
+      a.classList.toggle('aktif', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(girdiler){
+      girdiler.forEach(function(g){
+        if (g.isIntersecting) aktifYap(g.target.getAttribute('data-nav'));
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-nav]'), function(b){ io.observe(b); });
+  }
+
+  /* Form — önizleme */
+  var form = document.getElementById('on-gorusme');
+  var tesekkur = document.getElementById('form-tesekkur');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    tesekkur.textContent = 'Teşekkürler — bu bir tasarım önizlemesidir, mesaj gönderilmedi.';
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>
