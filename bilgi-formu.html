@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Web Sitesi Bilgi Formu</title>
+<meta name="theme-color" content="#8FB8DE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<style>
+:root{
+  --sky:#8FB8DE; --sky-pale:#D5E4F1; --dusk:#F7D9C4; --dusk-pale:#FBEADF;
+  --cloud:#FBFBF8; --paper:#FFFDF6; --wall:#F3EEE5;
+  --ink:#1B1E2B; --ink-soft:#474D65; --line:rgba(27,30,43,.14);
+  --orange:#E9895B; --orange-deep:#B4532A; --apple:#6E9B3A; --apple-deep:#4A6E22;
+  --hata:#A3362A;
+  --f-display:"Gloock","DM Serif Display",Georgia,"Times New Roman",serif;
+  --f-body:"Karla","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --gut:clamp(16px,4vw,32px);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--wall);color:var(--ink);font-family:var(--f-body);font-size:1.0625rem;line-height:1.6;padding-bottom:96px}
+a{color:inherit;text-underline-offset:.2em}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.12;margin:0;text-wrap:balance}
+p{margin:0}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.sar{max-width:760px;margin-inline:auto;padding-inline:var(--gut)}
+
+/* ---------- üst ---------- */
+.ust{background:linear-gradient(180deg,#8FB8DE 0%,#B9CDE2 45%,#F7D9C4 100%);padding-block:clamp(40px,8vw,72px) clamp(28px,6vw,48px)}
+.ust .etiket{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:.6rem}
+.ust .etiket::before{content:"";width:28px;height:1.5px;background:currentColor}
+.ust h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.7rem 0 .9rem}
+.ust .giris{max-width:58ch;color:#2E3346;font-size:1.08rem}
+.bilgiler{list-style:none;margin:1.3rem 0 0;padding:0;display:grid;gap:.5rem}
+.bilgiler li{display:flex;gap:.6rem;align-items:flex-start;font-size:.97rem;color:#2E3346}
+.bilgiler svg{flex:none;width:20px;height:20px;margin-top:.15rem;color:var(--orange-deep)}
+.taslak{margin-top:1.1rem;font-size:.9rem;color:var(--ink-soft);min-height:1.4em}
+
+/* ---------- bölümler ---------- */
+main{padding-block:28px 0;display:grid;gap:22px}
+.bolum{background:var(--cloud);border-radius:18px;box-shadow:0 0 0 1px var(--line),0 20px 40px -32px rgba(27,30,43,.5);padding:clamp(1.3rem,4vw,2.1rem)}
+.bolum-bas{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:1.2rem}
+.bolum-no{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--dusk);color:var(--orange-deep);font-family:var(--f-display);font-size:1.15rem}
+.bolum h2{font-size:clamp(1.45rem,3.6vw,1.8rem);padding-top:.15rem}
+.bolum-acik{margin-top:.35rem;color:var(--ink-soft);font-size:.97rem}
+.not{margin:-.2rem 0 1.2rem;padding:.8rem 1rem;border-radius:12px;background:var(--sky-pale);color:#2E3346;font-size:.94rem}
+.sorular{display:grid;gap:1.35rem}
+.soru{border:0;margin:0;padding:0;min-width:0}
+.soru > label,.soru > legend{display:block;padding:0;margin-bottom:.45rem;font-weight:700;font-size:1rem}
+.zorunlu{color:var(--orange-deep);margin-left:.2rem}
+.ipucu{display:block;margin:-.25rem 0 .5rem;font-size:.9rem;color:var(--ink-soft);font-weight:400}
+input[type=text],input[type=tel],input[type=email],input[type=url],textarea{
+  width:100%;min-height:50px;padding:.72rem .9rem;border:1.5px solid rgba(27,30,43,.32);border-radius:12px;background:#fff;
+  transition:border-color .2s, box-shadow .2s;
+}
+textarea{min-height:96px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 4px rgba(143,184,222,.45)}
+.secenekler{display:flex;flex-wrap:wrap;gap:.5rem}
+.secenekler.dikey{flex-direction:column;align-items:stretch}
+.secenek{position:relative}
+.secenek input{position:absolute;opacity:0;width:1px;height:1px}
+.secenek span{display:flex;align-items:center;gap:.6rem;min-height:46px;padding:.55rem 1rem;border:1.5px solid rgba(27,30,43,.3);border-radius:12px;background:#fff;cursor:pointer;font-weight:500;line-height:1.35;transition:background .2s,border-color .2s}
+.secenek span::before{content:"";flex:none;width:18px;height:18px;border:1.5px solid var(--ink);background:#fff;transition:background .15s}
+.secenek input[type=radio] + span::before{border-radius:50%}
+.secenek input[type=checkbox] + span::before{border-radius:5px}
+.secenek input:checked + span{background:var(--dusk-pale);border-color:var(--ink)}
+.secenek input[type=radio]:checked + span::before{background:radial-gradient(circle,var(--ink) 0 4.5px,#fff 5px)}
+.secenek input[type=checkbox]:checked + span::before{background:var(--ink) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/14px no-repeat}
+.secenek input:focus-visible + span{outline:3px solid var(--ink);outline-offset:2px}
+.ek{margin-top:.55rem}
+.ek label{display:block;font-size:.92rem;font-weight:500;color:var(--ink-soft);margin-bottom:.3rem}
+.gor{display:inline-flex;align-items:center;gap:.35rem;margin:-.15rem 0 .55rem;font-size:.92rem;font-weight:700;color:var(--apple-deep)}
+.soru.eksik > label,.soru.eksik > legend{color:var(--hata)}
+
+/* ---------- gönder ---------- */
+.gonder{background:var(--ink);color:var(--cloud);border-radius:18px;padding:clamp(1.4rem,4vw,2.2rem);box-shadow:0 30px 50px -30px rgba(27,30,43,.7)}
+.gonder h2{font-size:clamp(1.6rem,4vw,2rem);margin-bottom:.5rem}
+.gonder p{color:#D6DCE8}
+.eksikler{margin:1rem 0 0;padding:.9rem 1rem;border-radius:12px;background:rgba(247,217,196,.12);border:1px solid rgba(247,217,196,.35);font-size:.95rem}
+.eksikler ul{margin:.4rem 0 0;padding-left:1.1rem}
+.eksikler a{color:var(--dusk)}
+.tamam{margin:1rem 0 0;padding:.9rem 1rem;border-radius:12px;background:rgba(110,155,58,.18);border:1px solid rgba(110,155,58,.5);font-size:.95rem;color:#E2EFD3}
+.butonlar{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.3rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:50px;padding:.8rem 1.4rem;border-radius:999px;border:1.5px solid transparent;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .2s, background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:20px;height:20px}
+.btn-wa{background:#25D366;color:#0B2A17}
+.btn-wa:hover{background:#3BDB78}
+.btn-acik{background:transparent;border-color:rgba(251,251,248,.55);color:var(--cloud)}
+.btn-acik:hover{background:rgba(251,251,248,.1)}
+.sonuc{margin-top:.9rem;min-height:1.4em;font-size:.95rem;color:var(--dusk)}
+.onizle{margin-top:1.2rem}
+.onizle summary{cursor:pointer;font-weight:700;color:var(--dusk)}
+.onizle pre{margin:.8rem 0 0;max-height:360px;overflow:auto;white-space:pre-wrap;word-break:break-word;background:rgba(0,0,0,.25);border-radius:12px;padding:1rem;font:400 .88rem/1.55 ui-monospace,"Cascadia Mono",Consolas,monospace;color:#E6EAF2}
+.temizle-satir{margin-top:1.4rem;padding-top:1rem;border-top:1px solid rgba(251,251,248,.15);display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;font-size:.9rem;color:#B9C1D3}
+.link-btn{background:none;border:0;padding:0;color:#D6DCE8;text-decoration:underline;cursor:pointer;font-size:.9rem}
+.alt{padding-block:28px 12px;text-align:center;font-size:.88rem;color:var(--ink-soft)}
+
+/* ---------- sabit ilerleme çubuğu ---------- */
+.ilerleme{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(251,251,248,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:.7rem var(--gut) calc(.7rem + env(safe-area-inset-bottom,0px))}
+.ilerleme .sar{display:flex;align-items:center;gap:1rem;padding:0}
+.cubuk-alan{flex:1;min-width:0}
+.cubuk-yazi{font-size:.85rem;font-weight:700;color:var(--ink-soft);margin-bottom:.3rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cubuk{height:8px;border-radius:99px;background:var(--sky-pale);overflow:hidden}
+.cubuk i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--apple));border-radius:99px;transition:width .35s}
+.ilerleme a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:.5rem 1.1rem;border-radius:999px;background:var(--ink);color:var(--cloud);font-weight:700;font-size:.92rem;text-decoration:none}
+
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none !important} }
+</style>
+</head>
+<body>
+
+<header class="ust">
+  <div class="sar">
+    <p class="etiket">Web siteniz · Son adım</p>
+    <h1>Siteyi tamamlamak için bilgi formu</h1>
+    <p class="giris">Tasarım hazır; sitenin yayına alınması için aşağıdaki bilgilere ihtiyacımız var. Bilmediğiniz ya da henüz karar vermediğiniz soruları boş bırakabilirsiniz.</p>
+    <ul class="bilgiler">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Yaklaşık 10–15 dakika sürer. <span class="zorunlu" aria-hidden="true">✱</span> işaretli sorular zorunludur.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>Yanıtlarınız bu cihazda otomatik kaydedilir; ara verip daha sonra kaldığınız yerden devam edebilirsiniz.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Bilgiler hiçbir sunucuya gönderilmez. Sonda “WhatsApp ile gönder” butonuyla bize siz iletirsiniz.</li>
+    </ul>
+    <p class="taslak" id="taslak" aria-live="polite"></p>
+  </div>
+</header>
+
+<main class="sar" id="form-alani">
+  <noscript><div class="bolum"><p>Bu formun çalışması için tarayıcınızda JavaScript açık olmalıdır.</p></div></noscript>
+</main>
+
+<section class="sar" aria-labelledby="gonder-baslik" style="margin-top:22px">
+  <div class="gonder" id="gonder">
+    <h2 id="gonder-baslik">Formu gönderin</h2>
+    <p>“WhatsApp ile gönder” butonuna bastığınızda yanıtlarınız hazır bir mesaj olarak açılır; göndermeniz yeterli. Fotoğraf, logo ve belgeleri aynı sohbete WhatsApp’tan <b>“Belge”</b> olarak ekleyin, böylece kaliteleri bozulmaz.</p>
+    <div id="durum"></div>
+    <div class="butonlar">
+      <a class="btn btn-wa" id="wa" href="https://wa.me/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.5A12.5 12.5 0 0 0 5.2 22.3L3.6 28.4l6.3-1.6A12.5 12.5 0 1 0 16 3.5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M11.6 9.8c.4-.3 1-.3 1.3.2l1.3 2.4c.2.4.1.9-.2 1.2l-.8.8c.7 1.6 2 2.9 3.6 3.7l.8-.8c.3-.3.8-.4 1.2-.2l2.4 1.3c.5.3.6.9.2 1.3l-.9 1.1c-.6.7-1.6 1-2.5.7-3.7-1.2-6.6-4.1-7.8-7.8-.3-.9 0-1.9.7-2.5z" fill="currentColor"/></svg>
+        WhatsApp ile gönder
+      </a>
+      <button class="btn btn-acik" type="button" id="kopyala">Metni kopyala</button>
+      <button class="btn btn-acik" type="button" id="indir">Dosya olarak indir</button>
+    </div>
+    <p class="sonuc" id="sonuc" aria-live="polite"></p>
+    <details class="onizle">
+      <summary>Gönderilecek metni görün</summary>
+      <pre id="onizleme"></pre>
+    </details>
+    <div class="temizle-satir">
+      <span>Baştan başlamak mı istiyorsunuz?</span>
+      <button class="link-btn" type="button" id="temizle">Formu temizle</button>
+      <span id="temizle-onay" hidden>Tüm yanıtlar silinecek. <button class="link-btn" type="button" id="temizle-evet">Evet, temizle</button> · <button class="link-btn" type="button" id="temizle-vazgec">Vazgeç</button></span>
+    </div>
+  </div>
+</section>
+
+<p class="alt sar">Sorunuz olursa formu yarım bırakıp bize WhatsApp’tan yazabilirsiniz; yanıtlarınız kaybolmaz.</p>
+
+<div class="ilerleme" role="region" aria-label="Form ilerlemesi">
+  <div class="sar">
+    <div class="cubuk-alan">
+      <p class="cubuk-yazi" id="cubuk-yazi">Zorunlu sorular: 0 / 0</p>
+      <div class="cubuk" aria-hidden="true"><i id="cubuk"></i></div>
+    </div>
+    <a href="#gonder">Göndermeye geç</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* Yanıtların gideceği WhatsApp numarası (ülke koduyla, boşluksuz: 905XXXXXXXXX).
+     Boş bırakılırsa WhatsApp kişi seçme ekranını açar. */
+  var ALICI = "";
+  var TASARIM = "2-surrealizm-sade.html";
+  var ANAHTAR = "site-bilgi-formu-v1";
+
+  var KONULAR = ["Kaygı ve endişe", "Bedensel belirtiler ve psikosomatik yakınmalar", "Anlam kaybı ve varoluşsal sorular",
+    "Kendini gerçek hissetmeme", "Yas ve kayıp", "İlişkilerde tekrar eden örüntüler", "Yalnızlık", "Çökkün duygudurum",
+    "Yaşam geçişleri ve kararlar", "Duyguları ifade etmekte zorlanma"];
+
+  var ONAY = ["Onaylıyorum", "Değişiklik istiyorum"];
+  function onay(id, etiket, bolumLink) {
+    return { id: id, tip: "radio", etiket: etiket, zorunlu: true, secenekler: ONAY, link: bolumLink,
+             ek: { "Değişiklik istiyorum": { etiket: "Neyi nasıl değiştirelim?", tip: "textarea" } } };
+  }
+
+  var BOLUMLER = [
+    { baslik: "Kimlik ve unvan", sorular: [
+      { id: "ad", tip: "text", etiket: "Sitede görünecek ad soyad", zorunlu: true, ipucu: "Tam olarak sitede nasıl yazılmasını istiyorsanız öyle yazın." },
+      { id: "unvan", tip: "radio", etiket: "Unvan", zorunlu: true, dikey: true,
+        ipucu: "Yüksek lisans tamamlanana kadar “Psikolog” yazılmasını öneriyoruz; mezuniyetten sonra güncelleriz.",
+        secenekler: ["Psikolog", "Klinik Psikolog (yüksek lisans tamamlandı)", "Başka bir unvan"],
+        ek: { "Başka bir unvan": { etiket: "Hangi unvan?" } } },
+      { id: "mezuniyet", tip: "text", etiket: "Yüksek lisans tahmini mezuniyet tarihi", ipucu: "Örn. Haziran 2027" },
+      { id: "uyelik", tip: "textarea", etiket: "Mesleki üyelikler", ipucu: "Örn. Türk Psikologlar Derneği. Yoksa boş bırakın." }
+    ]},
+    { baslik: "İletişim bilgileri", sorular: [
+      { id: "telefon", tip: "tel", etiket: "Telefon numarası", zorunlu: true, ipucu: "Örn. 0 5XX XXX XX XX" },
+      { id: "whatsapp", tip: "radio", etiket: "Sitedeki WhatsApp butonu hangi numaraya gitsin?", zorunlu: true, dikey: true,
+        secenekler: ["Yukarıdaki telefon numarası", "Farklı bir numara", "WhatsApp butonu olmasın"],
+        ek: { "Farklı bir numara": { etiket: "WhatsApp numarası", tip: "tel" } } },
+      { id: "eposta", tip: "email", etiket: "E-posta adresi", zorunlu: true, ipucu: "İletişim formundan gelen mesajlar bu adrese iletilecek." },
+      { id: "bicim", tip: "checkbox", etiket: "Seans biçimi", zorunlu: true, secenekler: ["Yüz yüze", "Online"], varsayilan: ["Yüz yüze", "Online"] },
+      { id: "adres", tip: "textarea", etiket: "Ofis adresi", zorunlu: true, ipucu: "Yalnızca online çalışıyorsanız “Ofis yok” yazın." },
+      { id: "harita", tip: "url", etiket: "Google Haritalar konum bağlantısı", ipucu: "Haritalar’da ofisinizi açıp “Paylaş” ile kopyaladığınız bağlantı." },
+      { id: "gunler", tip: "checkbox", etiket: "Çalışma günleri", zorunlu: true, secenekler: ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"] },
+      { id: "saatler", tip: "text", etiket: "Çalışma saatleri", zorunlu: true, ipucu: "Örn. Hafta içi 10:00–19:00, Cumartesi 10:00–14:00" },
+      { id: "platform", tip: "checkbox", etiket: "Online seanslarda kullandığınız platform", secenekler: ["Zoom", "Google Meet", "WhatsApp görüntülü", "Başka"],
+        ek: { "Başka": { etiket: "Hangisi?" } } },
+      { id: "instagram", tip: "text", etiket: "Instagram kullanıcı adı", ipucu: "Örn. @kullaniciadi. Yoksa boş bırakın." },
+      { id: "sosyal", tip: "textarea", etiket: "Diğer sosyal medya ve profil bağlantıları", ipucu: "LinkedIn, YouTube, Doktortakvimi vb." }
+    ]},
+    { baslik: "Alan adı ve e-posta", aciklama: "Alan adı, sitenin internetteki adresidir (örn. adsoyad.com).", sorular: [
+      { id: "alanadi", tip: "radio", etiket: "Bir alan adınız var mı?", zorunlu: true, dikey: true, secenekler: ["Evet, var", "Hayır, yeni alınacak"],
+        ek: { "Evet, var": { etiket: "Alan adınız" }, "Hayır, yeni alınacak": { etiket: "Tercih ettiğiniz adres (birkaç alternatif yazabilirsiniz)" } } },
+      { id: "kayit", tip: "text", etiket: "Alan adı kimin adına kaydedilsin?", ipucu: "Ad soyad ya da varsa şirket unvanı" },
+      { id: "kurumsal", tip: "radio", etiket: "Alan adınızla bir e-posta adresi ister misiniz?", dikey: true,
+        secenekler: ["Evet (örn. iletisim@adsoyad.com)", "Hayır, mevcut e-postam yeterli"] }
+    ]},
+    { baslik: "Fotoğraflar ve logo", aciklama: "Fotoğrafları bu forma yükleyemezsiniz; formu gönderdikten sonra aynı WhatsApp sohbetine “Belge” olarak ekleyin.", sorular: [
+      { id: "foto", tip: "checkbox", etiket: "Göndereceğiniz fotoğraflar", zorunlu: true, dikey: true,
+        ipucu: "Yüksek çözünürlüklü 3–5 fotoğraf idealdir; mümkünse profesyonel çekim.",
+        secenekler: ["Portre (yüz)", "Yarım boy", "Çalışırken / seans ortamında", "Ofis ve terapi odası", "Şimdilik tasarımdaki fotoğraf kullanılsın"] },
+      { id: "logo", tip: "radio", etiket: "Logonuz var mı?", dikey: true, secenekler: ["Var, göndereceğim", "Yok, isim yazısı yeterli", "Yok, bir logo tasarlansın"] }
+    ]},
+    { baslik: "Metinlerin onayı", aciklama: "“Sitede görün” bağlantıları metni seçtiğiniz tasarımda yeni sekmede açar.", sorular: [
+      onay("hakkimda", "“Hakkımda” metni", "#hakkimda"),
+      onay("yaklasimlar", "Üç yaklaşımın açıklamaları (sanat terapisi, varoluşçu, psikanalitik)", "#yaklasim"),
+      { id: "konular", tip: "checkbox", etiket: "Destek verdiğiniz konular", zorunlu: true, dikey: true, link: "#konular",
+        ipucu: "Sitede kalmasını istediklerinizi işaretli bırakın.", secenekler: KONULAR, varsayilan: KONULAR.slice() },
+      { id: "konuek", tip: "textarea", etiket: "Eklenmesini istediğiniz konular" },
+      { id: "sure", tip: "text", etiket: "Seans süresi", zorunlu: true, varsayilan: "50 dakika" },
+      { id: "siklik", tip: "text", etiket: "Seans sıklığı", zorunlu: true, varsayilan: "Genellikle haftada bir" },
+      { id: "ucret", tip: "radio", etiket: "Seans ücreti sitede yazılsın mı?", zorunlu: true, dikey: true,
+        secenekler: ["Evet, yazılsın", "Hayır, ön görüşmede paylaşılsın"],
+        ek: { "Evet, yazılsın": { etiket: "Ücret (yüz yüze / online ayrı ise ikisini de yazın)" } } },
+      { id: "sss", tip: "textarea", etiket: "Sık sorulan sorulara eklemek istedikleriniz", link: "#sss", ipucu: "Danışanlarınızın size en çok sorduğu sorular." }
+    ]},
+    { baslik: "Eğitimler ve sunumlar", sorular: [
+      onay("egitim", "Eğitim listesindeki kurum ve program adlarının yazımı", "#egitimler"),
+      { id: "yillar", tip: "radio", etiket: "Eğitimlerin yanında yıl yazılsın mı?", secenekler: ["Evet", "Hayır"],
+        ek: { "Evet": { etiket: "Her eğitimin yılını yazın", tip: "textarea" } } },
+      { id: "sertifika", tip: "radio", etiket: "Sertifikalarınız sitede gösterilsin mi?", dikey: true, secenekler: ["Evet, WhatsApp’tan göndereceğim", "Hayır"] },
+      { id: "sunum", tip: "textarea", etiket: "“Kaygının Anlamı” sunumunu yaptığınız kurumlar", ipucu: "Yalnızca adının sitede yazılmasına izin veren kurumları ekleyin." }
+    ]},
+    { baslik: "Blog yazıları", aciklama: "Tasarımdaki yazı başlıkları örnek olarak konuldu.", sorular: [
+      { id: "blog", tip: "radio", etiket: "Yazılar bölümü için tercihiniz", zorunlu: true, dikey: true,
+        secenekler: ["Hazır yazılarım var, Word dosyası olarak göndereceğim", "Bölüm şimdilik kaldırılsın", "Bölüm kalsın, yazıları sonra ekleyeceğim"] }
+    ]},
+    { baslik: "Yasal metinler (KVKK)", aciklama: "KVKK aydınlatma metni, çerez politikası ve gizlilik metninin taslağını biz hazırlayacağız. Aşağıdaki bilgiler bu metinlerde “veri sorumlusu” olarak yer alacak.",
+      not: "İletişim formu yalnızca ad, iletişim bilgisi ve kısa bir mesaj alacak. Sağlık bilgisi “özel nitelikli kişisel veri” olduğu için formda istenmeyecek.",
+      sorular: [
+      { id: "vs_ad", tip: "text", etiket: "Veri sorumlusu (ad soyad ya da şirket unvanı)", zorunlu: true },
+      { id: "vs_adres", tip: "textarea", etiket: "Veri sorumlusunun adresi", zorunlu: true },
+      { id: "vs_eposta", tip: "email", etiket: "KVKK başvuruları için e-posta adresi", zorunlu: true },
+      { id: "kvkk", tip: "checkbox", etiket: "Onay", zorunlu: true,
+        secenekler: ["KVKK aydınlatma metni, çerez politikası ve gizlilik metni taslaklarının hazırlanmasını onaylıyorum"] }
+    ]},
+    { baslik: "Ek istekler", sorular: [
+      { id: "randevu", tip: "radio", etiket: "Online randevu sistemi (takvimden saat seçme) ister misiniz?", secenekler: ["Evet", "Hayır", "Emin değilim, konuşalım"] },
+      { id: "ingilizce", tip: "radio", etiket: "Sitenin İngilizce sürümü gerekli mi?", secenekler: ["Evet", "Hayır", "İleride"] },
+      { id: "tasarim", tip: "textarea", etiket: "Tasarımda değişmesini istedikleriniz", ipucu: "Renk, yazı, bölüm sırası vb." },
+      { id: "notlar", tip: "textarea", etiket: "Eklemek istediğiniz başka bir şey" }
+    ]}
+  ];
+
+  /* ---------- çizim ---------- */
+  var alan = document.getElementById("form-alani");
+  var tum = [];
+  var sayac = 0;
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  function kacis(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function girdi(tip, id, ad) {
+    var e = tip === "textarea" ? document.createElement("textarea") : document.createElement("input");
+    if (tip !== "textarea") e.type = tip;
+    e.id = id; e.name = ad;
+    if (tip === "email") e.autocomplete = "email";
+    if (tip === "tel") { e.autocomplete = "tel"; e.inputMode = "tel"; }
+    return e;
+  }
+
+  BOLUMLER.forEach(function (b, bi) {
+    var kutu = el("section", "bolum");
+    kutu.setAttribute("aria-labelledby", "b" + bi);
+    var bas = el("div", "bolum-bas");
+    bas.appendChild(el("span", "bolum-no", String(bi + 1))).setAttribute("aria-hidden", "true");
+    var bt = el("div");
+    var h = el("h2", null, kacis(b.baslik)); h.id = "b" + bi; bt.appendChild(h);
+    if (b.aciklama) bt.appendChild(el("p", "bolum-acik", kacis(b.aciklama)));
+    bas.appendChild(bt); kutu.appendChild(bas);
+    if (b.not) kutu.appendChild(el("p", "not", kacis(b.not)));
+    var liste = el("div", "sorular");
+
+    b.sorular.forEach(function (s) {
+      s.bolum = b.baslik;
+      var secimli = s.tip === "radio" || s.tip === "checkbox";
+      var kap = el(secimli ? "fieldset" : "div", "soru");
+      kap.id = "s-" + s.id;
+      var yildiz = s.zorunlu ? '<span class="zorunlu" aria-label="zorunlu">✱</span>' : "";
+      if (secimli) {
+        kap.appendChild(el("legend", null, kacis(s.etiket) + yildiz));
+      } else {
+        var lb = el("label", null, kacis(s.etiket) + yildiz); lb.htmlFor = "f-" + s.id; kap.appendChild(lb);
+      }
+      if (s.ipucu) kap.appendChild(el("span", "ipucu", kacis(s.ipucu)));
+      if (s.link) {
+        var a = el("a", "gor", 'Sitede görün <span aria-hidden="true">↗</span>');
+        a.href = TASARIM + s.link; a.target = "_blank"; a.rel = "noopener";
+        kap.appendChild(a);
+      }
+      s.ekler = {};
+      if (secimli) {
+        var grup = el("div", "secenekler" + (s.dikey ? " dikey" : ""));
+        s.kutular = [];
+        s.secenekler.forEach(function (o) {
+          var lab = el("label", "secenek");
+          var inp = document.createElement("input");
+          inp.type = s.tip; inp.name = s.id; inp.value = o; inp.id = "f-" + s.id + "-" + (sayac++);
+          if (s.varsayilan && s.varsayilan.indexOf(o) > -1) inp.checked = true;
+          lab.appendChild(inp); lab.appendChild(el("span", null, kacis(o)));
+          grup.appendChild(lab); s.kutular.push(inp);
+          if (s.ek && s.ek[o]) {
+            var ekKap = el("div", "ek"); ekKap.hidden = true;
+            var ekId = "f-" + s.id + "-ek-" + (sayac++);
+            var ekLb = el("label", null, kacis(s.ek[o].etiket)); ekLb.htmlFor = ekId;
+            var ekIn = girdi(s.ek[o].tip || "text", ekId, s.id + "__" + o);
+            ekKap.appendChild(ekLb); ekKap.appendChild(ekIn);
+            s.ekler[o] = { kap: ekKap, girdi: ekIn };
+            if (s.dikey) grup.appendChild(ekKap); else kap.appendChild(ekKap);
+          }
+        });
+        kap.insertBefore(grup, kap.querySelector(".ek") && !s.dikey ? kap.querySelector(".ek") : null);
+      } else {
+        s.girdi = girdi(s.tip, "f-" + s.id, s.id);
+        if (s.varsayilan) s.girdi.value = s.varsayilan;
+        kap.appendChild(s.girdi);
+      }
+      s.kap = kap;
+      liste.appendChild(kap);
+      tum.push(s);
+    });
+    kutu.appendChild(liste);
+    alan.appendChild(kutu);
+  });
+
+  /* ---------- değer okuma ---------- */
+  function deger(s) {
+    if (s.kutular) {
+      var p = [];
+      s.kutular.forEach(function (k) {
+        if (!k.checked) return;
+        var ek = s.ekler[k.value];
+        var ekv = ek && ek.girdi.value.trim();
+        p.push(ekv ? k.value + ": " + ekv : k.value);
+      });
+      return p;
+    }
+    var v = s.girdi.value.trim();
+    return v ? [v] : [];
+  }
+  function ekleriGuncelle(s) {
+    if (!s.kutular) return;
+    s.kutular.forEach(function (k) { if (s.ekler[k.value]) s.ekler[k.value].kap.hidden = !k.checked; });
+  }
+
+  /* ---------- metin ---------- */
+  function metin() {
+    var ad = deger(tum[0])[0] || "—";
+    var t = "WEB SİTESİ BİLGİ FORMU\n" + ad + " · " + new Date().toLocaleDateString("tr-TR") + "\n";
+    BOLUMLER.forEach(function (b, bi) {
+      t += "\n" + (bi + 1) + ") " + b.baslik.toLocaleUpperCase("tr-TR") + "\n";
+      b.sorular.forEach(function (s) {
+        var d = deger(s);
+        var cok = d.some(function (x) { return x.indexOf("\n") > -1; }) || (s.tip === "checkbox" && d.length > 3);
+        if (!d.length) t += "• " + s.etiket + ": —\n";
+        else if (cok) t += "• " + s.etiket + ":\n" + d.map(function (x) { return "   - " + x.replace(/\n/g, "\n     "); }).join("\n") + "\n";
+        else t += "• " + s.etiket + ": " + d.join(", ") + "\n";
+      });
+    });
+    return t;
+  }
+
+  /* ---------- ilerleme + eksikler ---------- */
+  var zorunlular = tum.filter(function (s) { return s.zorunlu; });
+  var durum = document.getElementById("durum");
+  function guncelle() {
+    tum.forEach(ekleriGuncelle);
+    var eksik = zorunlular.filter(function (s) { return !deger(s).length; });
+    var dolu = zorunlular.length - eksik.length;
+    document.getElementById("cubuk-yazi").textContent = "Zorunlu sorular: " + dolu + " / " + zorunlular.length;
+    document.getElementById("cubuk").style.width = (dolu / zorunlular.length * 100) + "%";
+    tum.forEach(function (s) { s.kap.classList.remove("eksik"); });
+    if (eksik.length) {
+      durum.innerHTML = '<div class="eksikler"><b>Henüz doldurulmayan zorunlu sorular (' + eksik.length + '):</b><ul>' +
+        eksik.map(function (s) { return '<li><a href="#' + s.kap.id + '">' + kacis(s.etiket) + "</a></li>"; }).join("") +
+        "</ul>Eksiklerle de gönderebilirsiniz; tamamlamak için sonradan tekrar gönderirsiniz.</div>";
+    } else {
+      durum.innerHTML = '<div class="tamam">Tüm zorunlu sorular doldu. Teşekkürler!</div>';
+    }
+    document.getElementById("onizleme").textContent = metin();
+    return eksik;
+  }
+  durum.addEventListener("click", function (e) {
+    var a = e.target.closest("a"); if (!a) return;
+    var hedef = document.querySelector(a.getAttribute("href"));
+    if (hedef) { setTimeout(function () { hedef.classList.add("eksik"); var f = hedef.querySelector("input,textarea"); if (f) f.focus({ preventScroll: true }); }, 50); }
+  });
+
+  /* ---------- otomatik kayıt ---------- */
+  var taslak = document.getElementById("taslak");
+  function kaydet() {
+    var veri = {};
+    tum.forEach(function (s) {
+      if (s.kutular) {
+        veri[s.id] = s.kutular.filter(function (k) { return k.checked; }).map(function (k) { return k.value; });
+        Object.keys(s.ekler).forEach(function (o) { veri[s.id + "__" + o] = s.ekler[o].girdi.value; });
+      } else veri[s.id] = s.girdi.value;
+    });
+    try {
+      localStorage.setItem(ANAHTAR, JSON.stringify(veri));
+      taslak.textContent = "Taslak bu cihazda kaydedildi · " + new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
+    } catch (e) { taslak.textContent = ""; }
+  }
+  function yukle() {
+    var veri;
+    try { veri = JSON.parse(localStorage.getItem(ANAHTAR) || "null"); } catch (e) { veri = null; }
+    if (!veri) return;
+    tum.forEach(function (s) {
+      if (!(s.id in veri)) return;
+      if (s.kutular) {
+        s.kutular.forEach(function (k) { k.checked = (veri[s.id] || []).indexOf(k.value) > -1; });
+        Object.keys(s.ekler).forEach(function (o) { if (veri[s.id + "__" + o] != null) s.ekler[o].girdi.value = veri[s.id + "__" + o]; });
+      } else s.girdi.value = veri[s.id];
+    });
+    taslak.textContent = "Daha önce yazdıklarınız geri yüklendi; kaldığınız yerden devam edebilirsiniz.";
+  }
+  yukle();
+  guncelle();
+  var zaman;
+  alan.addEventListener("input", function () { clearTimeout(zaman); zaman = setTimeout(function () { kaydet(); guncelle(); }, 300); });
+  alan.addEventListener("change", function () { kaydet(); guncelle(); });
+
+  /* ---------- gönderme ---------- */
+  var sonuc = document.getElementById("sonuc");
+  document.getElementById("wa").addEventListener("click", function () {
+    var t = metin();
+    this.href = "https://wa.me/" + ALICI + "?text=" + encodeURIComponent(t);
+    sonuc.textContent = t.length > 3500
+      ? "Mesaj uzun olduğu için WhatsApp’ta kesilirse “Metni kopyala” ile kopyalayıp sohbete yapıştırabilirsiniz."
+      : "WhatsApp açılıyor; mesajı göndermeniz yeterli. Ardından fotoğrafları “Belge” olarak ekleyin.";
+  });
+  document.getElementById("kopyala").addEventListener("click", function () {
+    var t = metin();
+    function geriDon() {
+      var pre = document.getElementById("onizleme");
+      pre.closest("details").open = true;
+      var r = document.createRange(); r.selectNodeContents(pre);
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      sonuc.textContent = "Otomatik kopyalanamadı; metin seçildi, kopyalayıp WhatsApp’a yapıştırabilirsiniz.";
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(function () { sonuc.textContent = "Kopyalandı. WhatsApp sohbetine yapıştırabilirsiniz."; }, geriDon);
+    } else geriDon();
+  });
+  document.getElementById("indir").addEventListener("click", function () {
+    var blob = new Blob([metin()], { type: "text/plain;charset=utf-8" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "web-sitesi-bilgi-formu.txt";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    sonuc.textContent = "Dosya indirildi; WhatsApp’tan belge olarak gönderebilirsiniz.";
+  });
+
+  /* ---------- temizle (iki adımlı) ---------- */
+  var onay2 = document.getElementById("temizle-onay");
+  document.getElementById("temizle").addEventListener("click", function () { onay2.hidden = false; });
+  document.getElementById("temizle-vazgec").addEventListener("click", function () { onay2.hidden = true; });
+  document.getElementById("temizle-evet").addEventListener("click", function () {
+    try { localStorage.removeItem(ANAHTAR); } catch (e) {}
+    location.reload();
+  });
+})();
+</script>
+</body>
+</html>
