@@ -6,7 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Psk. Mustafa Tepret · Psikolog</title>
 <meta name="description" content="Psk. Mustafa Tepret — yetişkinlerle bireysel psikoterapi: sanat psikoterapisi, varoluşçu ve psikanalitik yaklaşımlar. Yüz yüze ve online (Zoom) görüşmeler.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F5F4F0'/%3E%3Cpath d='M23 10C11 22 11 42 23 54M41 10C53 22 53 42 41 54' fill='none' stroke='%23141414' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%231D3BD1'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="img/favicon-dongu.png">
+<link rel="apple-touch-icon" href="img/favicon-dongu.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap">
@@ -119,10 +120,7 @@ button,input,textarea{font:inherit;color:inherit}
 .site-header{position:sticky;top:0;z-index:900;background:color-mix(in srgb,var(--bg) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .header-bar{display:flex;align-items:center;gap:.9rem;min-height:74px}
 .logo{display:inline-flex;align-items:center;gap:.75rem;flex-shrink:0;color:var(--ink);text-decoration:none}
-.logo-isaret{display:inline-flex;align-items:center;font-family:var(--f-display);font-size:1.35rem;line-height:1;letter-spacing:.02em}
-.logo-isaret .par{color:var(--accent-2);font-size:1.5em;line-height:.8;transform:translateY(-.04em)}
-.logo-isaret .par:first-child{margin-right:.08em}
-.logo-isaret .par:last-child{margin-left:.08em}
+.logo-gorsel{height:50px;width:auto}
 .logo-yazi{display:flex;flex-direction:column;line-height:1}
 .logo-ad{font-weight:700;font-size:.92rem;letter-spacing:.11em;text-transform:uppercase}
 .logo-alt{margin-top:.38rem;font-size:.72rem;letter-spacing:.06em;color:var(--ink-soft)}
@@ -150,7 +148,7 @@ button,input,textarea{font:inherit;color:inherit}
 @media (max-width:520px){
   .header-bar{gap:.55rem;min-height:66px}
   .logo{gap:.5rem}
-  .logo-isaret{font-size:1.15rem}
+  .logo-gorsel{height:42px}
   .logo-ad{font-size:.78rem;letter-spacing:.08em}
   .logo-alt{display:none}
   .btn-randevu{padding:.5rem .85rem;font-size:.86rem;min-height:42px}
@@ -286,6 +284,7 @@ button,input,textarea{font:inherit;color:inherit}
 .site-footer{padding:clamp(3.5rem,6vw,4.5rem) 0 6.5rem;color:var(--dark-ink);background:var(--dark)}
 .footer-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:2rem;padding-bottom:2.2rem;border-bottom:1px solid rgba(255,255,255,.14)}
 .site-footer .logo{color:var(--dark-ink)}
+.site-footer .logo-gorsel{box-sizing:content-box;height:46px;padding:9px 13px;border-radius:14px;background:#F5F4F0}
 .site-footer .logo-alt{color:var(--dark-soft)}
 .footer-marka p{max-width:36ch;margin-top:1rem;color:var(--dark-soft)}
 .footer-liste{list-style:none;display:grid;gap:.5rem;align-content:start}
@@ -326,7 +325,7 @@ button,input,textarea{font:inherit;color:inherit}
 <header class="site-header">
   <div class="wrap header-bar">
     <a class="logo" href="#giris" aria-label="Psk. Mustafa Tepret, ana sayfa">
-      <span class="logo-isaret" aria-hidden="true"><span class="par">(</span>MT<span class="par">)</span></span>
+      <img class="logo-gorsel" src="img/logo-dongu.png" alt="" width="242" height="360">
       <span class="logo-yazi"><span class="logo-ad">Psk. Mustafa Tepret</span><span class="logo-alt">Bireysel psikoterapi</span></span>
     </a>
     <nav id="site-nav" class="site-nav" aria-label="Ana menü">
@@ -590,7 +589,7 @@ button,input,textarea{font:inherit;color:inherit}
     <div class="footer-top">
       <div class="footer-marka">
         <a class="logo" href="#giris" aria-label="Psk. Mustafa Tepret, sayfa başı">
-          <span class="logo-isaret" aria-hidden="true"><span class="par">(</span>MT<span class="par">)</span></span>
+          <img class="logo-gorsel" src="img/logo-dongu.png" alt="" width="242" height="360" loading="lazy">
           <span class="logo-yazi"><span class="logo-ad">Psk. Mustafa Tepret</span><span class="logo-alt">Bireysel psikoterapi</span></span>
         </a>
         <p>Yetişkinlerle sanat psikoterapisi, varoluşçu ve psikanalitik psikoterapi. Yüz yüze &amp; Online.</p>
